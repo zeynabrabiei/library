@@ -15,10 +15,12 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   background: var(--background);
   color: var(--foreground);
@@ -68,4 +70,24 @@ button {
   to {
     transform: scaleX(1);
   }
+}
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(231, 223, 213, 0.55) 25%,
+    rgba(255, 253, 249, 0.95) 50%,
+    rgba(231, 223, 213, 0.55) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
 }

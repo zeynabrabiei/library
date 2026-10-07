@@ -1,35 +1,76 @@
-import Link from "next/link";
-import { ArrowLeft, BookOpen } from "lucide-react";
-
-export default function NotFound() {
+export default function Loading() {
   return (
-    <main className="container flex min-h-[70vh] items-center justify-center py-16">
-      <div className="max-w-lg text-center">
-        <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-[#171411] text-white">
-          <BookOpen size={27} />
+    <main className="min-h-screen bg-(--background)">
+      {/* Hero skeleton */}
+      <section className="relative overflow-hidden bg-[#171411]">
+        <div className="absolute left-1/2 top-1/2 size-105 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c96b45]/5 blur-[100px]" />
+
+        <div className="container flex min-h-155 items-center justify-center py-20">
+          <div className="w-full max-w-3xl animate-pulse text-center">
+            {/* Badge */}
+            <div className="mx-auto h-8 w-52 rounded-full bg-white/6" />
+
+            {/* Heading */}
+            <div className="mx-auto mt-8 h-20 max-w-2xl rounded-2xl bg-white/6 sm:h-28" />
+
+            <div className="mx-auto mt-4 h-20 max-w-xl rounded-2xl bg-white/4 sm:h-10" />
+
+            {/* Description */}
+            <div className="mx-auto mt-8 h-4 max-w-lg rounded-full bg-white/5" />
+            <div className="mx-auto mt-3 h-4 max-w-md rounded-full bg-white/4" />
+
+            {/* Buttons */}
+            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="h-14 w-full rounded-2xl bg-white/[0.07] sm:w-48" />
+              <div className="h-14 w-full rounded-2xl bg-white/4 sm:w-44" />
+            </div>
+
+            {/* Stats */}
+            <div className="mx-auto mt-12 grid max-w-xl grid-cols-3 border-y border-white/6 py-5">
+              <SkeletonStat />
+              <SkeletonStat />
+              <SkeletonStat />
+            </div>
+          </div>
         </div>
+      </section>
 
-        <p className="mt-8 text-sm font-bold tracking-[0.2em] text-(--primary)">
-          404
-        </p>
+      {/* Content skeleton */}
+      <section className="container py-16">
+        <div className="animate-pulse">
+          <div className="h-8 w-48 rounded-lg bg-[#e7dfd5]" />
+          <div className="mt-3 h-4 w-72 rounded-full bg-[#e7dfd5]/70" />
 
-        <h1 className="mt-3 text-4xl font-black tracking-tight text-(--foreground) sm:text-5xl">
-          This page is missing.
-        </h1>
-
-        <p className="mt-4 text-sm leading-7 text-(--muted) sm:text-base">
-          Looks like this page wandered off somewhere between the shelves.
-          Let&apos;s get you back to the library.
-        </p>
-
-        <Link
-          href="/"
-          className="mt-7 inline-flex items-center gap-2 rounded-xl bg-(--foreground) px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-(--primary)"
-        >
-          <ArrowLeft size={17} />
-          Back to Library
-        </Link>
-      </div>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <BookSkeleton key={index} />
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
+  );
+}
+
+function SkeletonStat() {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="h-6 w-10 rounded-md bg-white/6" />
+      <div className="h-2.5 w-14 rounded-full bg-white/4" />
+    </div>
+  );
+}
+
+function BookSkeleton() {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-[#e7dfd5] bg-[#fffdf9]">
+      <div className="aspect-3/4 bg-[#e7dfd5]/70" />
+
+      <div className="space-y-3 p-4">
+        <div className="h-4 w-4/5 rounded-full bg-[#e7dfd5]" />
+        <div className="h-3 w-2/5 rounded-full bg-[#e7dfd5]/70" />
+        <div className="h-9 w-full rounded-xl bg-[#e7dfd5]/60" />
+      </div>
+    </div>
   );
 }

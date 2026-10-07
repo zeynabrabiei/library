@@ -4,6 +4,7 @@ import { ArrowLeft, BookOpen, CalendarDays, Globe, UserRound } from "lucide-reac
 
 import { books } from "@/lib/mockData";
 import FavoriteDetailsButton from "@/components/books/FavoriteDetailsButton";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return books.map((book) => ({
@@ -17,27 +18,7 @@ export default async function BookDetailsPage({ params }) {
   const book = books.find((item) => item.id === id);
 
   if (!book) {
-    return (
-      <section className="container flex min-h-[60vh] items-center justify-center py-16">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-slate-950">
-            Book not found
-          </h1>
-
-          <p className="mt-3 text-sm text-(--muted)">
-            The book you are looking for does not exist.
-          </p>
-
-          <Link
-            href="/books"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-(--primary)"
-          >
-            <ArrowLeft size={17} />
-            Back to Books
-          </Link>
-        </div>
-      </section>
-    );
+   notFound();
   }
 
   return (
