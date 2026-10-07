@@ -37,7 +37,7 @@ export default function FavoritesPage() {
           {Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
-              className="aspect-[3/4] animate-pulse rounded-2xl bg-slate-200"
+              className="aspect-3/4 animate-pulse rounded-2xl bg-slate-200"
             />
           ))}
         </div>

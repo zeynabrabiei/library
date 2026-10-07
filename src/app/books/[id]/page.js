@@ -51,7 +51,7 @@ export default async function BookDetailsPage({ params }) {
       </Link>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[360px_1fr] lg:gap-16">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-slate-100 shadow-xl shadow-slate-200/50">
+        <div className="relative aspect-3/4 overflow-hidden rounded-3xl bg-slate-100 shadow-xl shadow-slate-200/50">
           <Image
             src={`/images/${book.image}`}
             alt={book.title}
