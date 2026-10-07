@@ -46,7 +46,7 @@ export default function Footer() {
               aria-label="GitHub"
               className="text-slate-500 transition hover:text-slate-900"
             >
-              <Github size={19} />
+              {/* <Github size={19} /> */}
             </a>
           </div>
         </div>
