@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Heart, Search } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Heart,
+  Sparkles,
+} from "lucide-react";
 
 import { books } from "@/lib/mockData";
 import BookGrid from "@/components/books/BookGrid";
@@ -9,68 +14,124 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#171411]">
-        <div className="container relative z-10 py-20 sm:py-28 lg:py-32">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#d9c7b5]/20 bg-[#d9c7b5]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#d9c7b5]">
-              <BookOpen size={15} />
-              Personal Library
-            </span>
+      <section className="relative isolate min-h-170 overflow-hidden bg-[#171411] sm:min-h-190">
+        {/* Background glow */}
+        <div className="absolute left-1/2 top-1/2 -z-10 size-150-translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b85c38]/10 blur-[120px]" />
 
-            <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-[#fffaf3] sm:text-5xl lg:text-6xl">
-              Discover your next
-              <span className="text-[#c96b45]"> great book.</span>
+        <div className="absolute -right-40 -top-40 -z-10 size-125 rounded-full bg-[#d9c7b5]/5 blur-[100px]" />
+
+        <div className="absolute -bottom-40 -left-40 -z-10 size-125 rounded-full bg-[#8c4934]/10 blur-[100px]" />
+
+        {/* Decorative grid */}
+        <div className="absolute inset-0 -z-10 opacity-[0.035] bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] bg-size-[70px_70px]" />
+
+        {/* Floating book cards */}
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
+          <FloatingBook
+            book={books[2]}
+            className="left-[7%] top-[18%]"
+            animation="animate-[float_7s_ease-in-out_infinite]"
+            rotate="-rotate-6"
+          />
+
+          <FloatingBook
+            book={books[7]}
+            className="right-[8%] top-[17%]"
+            animation="animate-[float_8s_ease-in-out_infinite]"
+            rotate="rotate-6"
+          />
+
+          <FloatingBook
+            book={books[4]}
+            className="bottom-[13%] left-[15%]"
+            animation="animate-[float_9s_ease-in-out_infinite]"
+            rotate="rotate-6"
+          />
+
+          <FloatingBook
+            book={books[0]}
+            className="bottom-[10%] right-[14%]"
+            animation="animate-[float_6s_ease-in-out_infinite]"
+            rotate="-rotate-6"
+          />
+        </div>
+
+        {/* Main content */}
+        <div className="container relative flex min-h-170 items-center justify-center py-20 text-center sm:min-h-190">
+          <div className="max-w-4xl">
+            <div className="hero-badge mx-auto inline-flex items-center gap-2 rounded-full border border-[#d9c7b5]/15 bg-[#d9c7b5]/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#d9c7b5] backdrop-blur-md">
+              <Sparkles size={14} />
+              A little library of great stories
+            </div>
+
+            <h1 className="hero-title mt-7 text-5xl font-black leading-[0.95] tracking-[-0.04em] text-[#fffaf3] sm:text-6xl md:text-7xl lg:text-8xl">
+              Every book
+              <br />
+              <span className="relative inline-block text-[#c96b45]">
+                opens a door.
+                <span className="absolute -bottom-2 left-0 h-px w-full origin-left animate-[lineReveal_1.5s_ease-out_0.8s_both] bg-[#c96b45]/70" />
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#cfc5ba] sm:text-lg">
-              Explore a carefully selected collection of classic books, discover new
-              stories, and save your favorites in one simple library.
+            <p className="hero-description mx-auto mt-7 max-w-2xl text-sm leading-7 text-[#cfc5ba] sm:text-base sm:leading-8 md:text-lg">
+              Discover timeless stories, explore remarkable authors, and
+              build a personal collection of books worth remembering.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="hero-actions mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/books"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#c96b45] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#b85c38]"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#c96b45] px-7 py-4 text-sm font-bold text-white shadow-[0_15px_50px_rgba(201,107,69,0.2)] transition duration-300 hover:-translate-y-1 hover:bg-[#b85c38] hover:shadow-[0_20px_60px_rgba(201,107,69,0.3)] sm:w-auto"
               >
-                Explore Books
-                <ArrowRight size={18} />
+                Explore the Library
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </Link>
 
               <Link
                 href="/favorites"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d9c7b5]/20 bg-[#d9c7b5]/5 px-6 py-3.5 text-sm font-semibold text-[#fffaf3] transition hover:bg-[#d9c7b5]/10"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-[#d9c7b5]/15 bg-white/5 px-7 py-4 text-sm font-bold text-[#fffaf3] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white/10 sm:w-auto"
               >
                 <Heart size={18} />
                 My Favorites
               </Link>
             </div>
+
+            {/* Stats */}
+            <div className="hero-stats mx-auto mt-12 grid max-w-xl grid-cols-3 border-y border-[#d9c7b5]/10 py-5">
+              <Stat value={books.length} label="Books" />
+              <Stat value="10+" label="Authors" />
+              <Stat value="∞" label="Stories" />
+            </div>
           </div>
         </div>
 
-        <div className="pointer-events-none absolute -right-40 -top-40 size-112 rounded-full bg-[#c96b45]/10 blur-3xl" />
-
-        <div className="pointer-events-none absolute -bottom-40 -left-40 size-112 rounded-full bg-[#d9c7b5]/5 blur-3xl" />
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 h-32 w-full bg-linear-to-t from-[#171411] to-transparent" />
       </section>
 
+      {/* Featured books */}
       <section className="container py-16 sm:py-20">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-semibold text-(--primary)">
-              OUR COLLECTION
+            <p className="text-sm font-bold tracking-[0.16em] text-(--primary)">
+              THE COLLECTION
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-(--foreground) sm:text-3xl">
               Featured Books
             </h2>
 
             <p className="mt-2 text-sm text-(--muted)">
-              Explore some of the books in our library.
+              A few stories worth discovering.
             </p>
           </div>
 
           <Link
             href="/books"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-(--primary) hover:text-(--primary-dark)"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-(--primary) transition hover:text-(--primary-dark)"
           >
             View all books
             <ArrowRight size={17} />
@@ -81,57 +142,39 @@ export default function HomePage() {
           <BookGrid books={featuredBooks} />
         </div>
       </section>
-
-      <section className="border-y border-(--border) bg-white">
-        <div className="container py-16">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <div className="flex size-11 items-center justify-center rounded-xl bg-blue-50 text-(--primary)">
-                <Search size={21} />
-              </div>
-
-              <h3 className="mt-4 font-bold text-slate-900">
-                Easy Discovery
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-(--muted)">
-                Quickly search through the entire collection and find books
-                that match your interests.
-              </p>
-            </div>
-
-            <div>
-              <div className="flex size-11 items-center justify-center rounded-xl bg-red-50 text-red-500">
-                <Heart size={21} />
-              </div>
-
-              <h3 className="mt-4 font-bold text-slate-900">
-                Save Favorites
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-(--muted)">
-                Keep your favorite books together and access them whenever you
-                want.
-              </p>
-            </div>
-
-            <div>
-              <div className="flex size-11 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
-                <BookOpen size={21} />
-              </div>
-
-              <h3 className="mt-4 font-bold text-slate-900">
-                Detailed Information
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-(--muted)">
-                View useful information about each book, including its author,
-                language, year, and page count.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
+  );
+}
+
+function FloatingBook({ book, className, animation, rotate }) {
+  return (
+    <div
+      className={`absolute ${className} ${animation} ${rotate}`}
+    >
+      <div className="relative w-32 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-1 shadow-2xl backdrop-blur-md">
+        <div className="aspect-3/4 overflow-hidden rounded-lg">
+          <img
+            src={`/images/${book.image}`}
+            alt=""
+            className="h-full w-full object-cover opacity-80"
+          />
+        </div>
+
+        <p className="truncate px-2 py-2 text-left text-[10px] font-semibold text-white/70">
+          {book.title}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Stat({ value, label }) {
+  return (
+    <div className="text-center">
+      <p className="text-xl font-bold text-[#fffaf3]">{value}</p>
+      <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-[#8e857b]">
+        {label}
+      </p>
+    </div>
   );
 }

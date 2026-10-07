@@ -1,45 +1,82 @@
 # 📚 Book Library
 
-A modern, responsive book library built with **Next.js**, **JavaScript**, and **Tailwind CSS**.
+> A modern and responsive book discovery experience built with Next.js, JavaScript, and Tailwind CSS.
 
-This project provides a clean and intuitive interface for discovering books, searching through a collection, viewing detailed book information, and saving favorite books for later.
+**Live Demo:** https://fav-library.vercel.app/
+**Repository:** https://github.com/zeynabrabiei/library
 
-The project is built as a frontend-focused application without a backend, using local mock data and browser storage to manage favorites.
+---
+
+## ✨ Overview
+
+Book Library is a frontend-focused web application designed to provide a clean and enjoyable way to discover books, explore detailed information, and create a personal list of favorite books.
+
+The project was built without a backend using local mock data and browser storage, while following a modern Next.js App Router architecture.
+
+---
+
+## 🚀 Live Demo
+
+👉 **https://fav-library.vercel.app/**
 
 ---
 
 ## ✨ Features
 
-* 📚 Browse a collection of books
-* 🔎 Search books by:
-
-  * Title
-  * Author
-  * Country
-  * Language
+* 📚 Browse a curated collection of books
+* 🔎 Search by title, author, country, or language
 * ❤️ Add and remove books from favorites
-* 💾 Persist favorites using `localStorage`
-* 📖 Dedicated book details pages
-* 🔗 External links for additional book information
+* 💾 Persistent favorites with `localStorage`
+* 📖 Dynamic book detail pages
+* 🔗 External book information links
 * 📱 Fully responsive design
-* ♿ Accessible interactive elements
-* ⚡ Server-side rendering with Next.js App Router
-* 🧩 Reusable and maintainable components
-* 🎨 Editorial-inspired responsive UI
-* 🦴 Loading skeletons and empty states
-* 🚫 Custom not-found handling for unavailable books
+* ⚡ Next.js App Router
+* 🧩 Reusable React components
+* 🎨 Responsive editorial-style interface
+* ⏳ Loading state
+* 🚫 Custom 404 page
+* ⚠️ Error boundary
+* ♿ Accessible interactive controls
+* 🖼️ Optimized book images with Next.js Image
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Next.js 16**
-* **React**
-* **JavaScript**
-* **Tailwind CSS v4**
-* **Lucide React**
-* **Next.js App Router**
-* **localStorage**
+| Technology   | Usage                 |
+| ------------ | --------------------- |
+| Next.js      | Application framework |
+| React        | UI development        |
+| JavaScript   | Application logic     |
+| Tailwind CSS | Styling               |
+| Lucide React | Interface icons       |
+| localStorage | Favorite persistence  |
+| Vercel       | Deployment            |
+
+---
+
+## 🧠 Architecture
+
+The application uses the Next.js App Router and keeps server-side rendering as the default wherever possible.
+
+Client Components are isolated to interactive functionality such as:
+
+* Search
+* Favorites
+* Mobile navigation
+* Error handling
+
+The book catalog is maintained locally in:
+
+```text
+src/lib/mockData.js
+```
+
+Book images are served from:
+
+```text
+public/images/
+```
 
 ---
 
@@ -52,19 +89,19 @@ src/
 │   │   ├── [id]/
 │   │   │   └── page.js
 │   │   └── page.js
-│   │
 │   ├── favorites/
 │   │   └── page.js
-│   │
+│   ├── error.js
 │   ├── globals.css
 │   ├── layout.js
+│   ├── loading.js
+│   ├── not-found.js
 │   └── page.js
 │
 ├── components/
 │   ├── books/
 │   │   ├── BookCard.js
 │   │   ├── BookGrid.js
-│   │   ├── FavoriteButton.js
 │   │   ├── FavoriteDetailsButton.js
 │   │   └── SearchBooks.js
 │   │
@@ -76,80 +113,48 @@ src/
     └── mockData.js
 
 public/
-├── images/
-│   ├── 1.png
-│   ├── 2.png
-│   ├── ...
-│   └── 10.png
-└── icon.svg
+└── images/
 ```
 
 ---
 
-## 🧠 Architecture
+## 🔎 Search Experience
 
-The application uses the **Next.js App Router** and follows a component-based architecture.
+The search system provides instant client-side filtering across multiple book properties:
 
-Static book data is stored in:
+* Title
+* Author
+* Country
+* Language
 
-```text
-src/lib/mockData.js
-```
-
-Book images are served from:
-
-```text
-public/images/
-```
-
-Server Components are used by default, while client components are isolated to areas that require browser interaction such as:
-
-* Search
-* Favorites
-* Mobile navigation
-
-Favorites are stored in the browser using:
-
-```text
-localStorage
-```
-
-This keeps the project backend-free while still providing persistent user functionality.
-
----
-
-## 🔍 Search
-
-The search functionality allows users to find books by multiple fields:
-
-```text
-Title
-Author
-Country
-Language
-```
-
-Search results update instantly as the user types.
+This allows users to quickly find books without requiring a backend search service.
 
 ---
 
 ## ❤️ Favorites
 
-Users can save books to their personal favorites list.
+Favorite books are stored using the browser's `localStorage`.
 
-Favorites are persisted with browser `localStorage`, so saved books remain available after refreshing or reopening the application.
+This means users can:
+
+1. Add a book to favorites
+2. Refresh the page
+3. Close and reopen the website
+4. Keep their saved books
+
+No backend or authentication is required for this functionality.
 
 ---
 
-## 📖 Book Details
+## 📖 Dynamic Book Pages
 
-Each book has a dedicated route:
+Every book has its own dynamic route:
 
 ```text
 /books/[id]
 ```
 
-The details page includes:
+Each page provides:
 
 * Book cover
 * Title
@@ -158,21 +163,50 @@ The details page includes:
 * Language
 * Publication year
 * Number of pages
-* Favorite functionality
+* Favorite action
 * External information link
+
+---
+
+## 🎨 Design
+
+The interface uses an editorial-inspired visual direction rather than the typical blue SaaS/e-commerce aesthetic.
+
+The design combines:
+
+* Warm neutrals
+* Terracotta accents
+* Dark editorial hero sections
+* Glassmorphism details
+* Floating book cards
+* Responsive layouts
+* Subtle CSS animations
 
 ---
 
 ## 📱 Responsive Design
 
-The interface is designed for:
+The application is optimized for:
 
-* Mobile devices
-* Tablets
-* Laptops
-* Large desktop screens
+* 📱 Mobile
+* 📱 Tablet
+* 💻 Laptop
+* 🖥️ Desktop
 
-The layout uses responsive Tailwind CSS utilities to provide a consistent experience across different screen sizes.
+The layout adapts progressively using Tailwind CSS responsive utilities.
+
+---
+
+## ⚡ Performance
+
+The project follows modern Next.js practices including:
+
+* Server Components by default
+* Small isolated Client Components
+* Static generation for book detail routes
+* Optimized images
+* Minimal dependencies
+* CSS-based animations
 
 ---
 
@@ -181,13 +215,7 @@ The layout uses responsive Tailwind CSS utilities to provide a consistent experi
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/book-library.git
-```
-
-Navigate into the project:
-
-```bash
-cd book-library
+git clone https://github.com/zeynabrabiei/library.git
 ```
 
 Install dependencies:
@@ -210,15 +238,13 @@ http://localhost:3000
 
 ---
 
-## 📦 Build for Production
-
-Create a production build:
+## 📦 Production Build
 
 ```bash
 npm run build
 ```
 
-Run the production server:
+Then:
 
 ```bash
 npm start
@@ -226,39 +252,22 @@ npm start
 
 ---
 
-## 🎯 Project Goals
-
-This project was created as a portfolio project to demonstrate practical frontend development skills, including:
-
-* Modern Next.js architecture
-* React component design
-* Server and Client Components
-* Responsive UI development
-* State management
-* Browser storage
-* Dynamic routing
-* Search and filtering
-* Accessibility considerations
-* Clean and reusable code
-
----
-
 ## 🔮 Future Improvements
 
-Possible future improvements include:
+Potential future features include:
 
-* Book categories
 * Advanced filtering
-* Sorting by publication year or page count
+* Sorting
+* Categories
 * Pagination
-* User authentication
-* Personal reading lists
+* Reading lists
 * Reading progress
+* User authentication
 * Backend integration
 * Database persistence
-* Book recommendations
+* Personalized recommendations
 * Dark mode
-* Animated page transitions
+* Page transition animations
 
 ---
 
@@ -266,10 +275,15 @@ Possible future improvements include:
 
 **Zeynab Rabiei**
 
-Frontend Developer focused on building modern, responsive, and user-friendly web applications with React and Next.js.
+Frontend Developer focused on building modern, responsive, and user-friendly applications with React and Next.js.
+
+### Links
+
+* **Live Demo:** https://fav-library.vercel.app/
+* **GitHub:** https://github.com/zeynabrabiei/library
 
 ---
 
 ## 📄 License
 
-This project is created for educational and portfolio purposes.
+This project was created for educational and portfolio purposes.
