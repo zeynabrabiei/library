@@ -9,47 +9,48 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-slate-950">
-        <div className="container relative py-20 sm:py-28 lg:py-32">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-blue-300">
-              <BookOpen size={15} />
-              Personal Library
-            </span>
+<section className="relative overflow-hidden bg-[#171411]">
+  <div className="container relative z-10 py-20 sm:py-28 lg:py-32">
+    <div className="max-w-3xl">
+      <span className="inline-flex items-center gap-2 rounded-full border border-[#d9c7b5]/20 bg-[#d9c7b5]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#d9c7b5]">
+        <BookOpen size={15} />
+        Personal Library
+      </span>
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Discover your next
-              <span className="text-blue-400"> great book.</span>
-            </h1>
+      <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-[#fffaf3] sm:text-5xl lg:text-6xl">
+        Discover your next
+        <span className="text-[#c96b45]"> great book.</span>
+      </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-              Explore a carefully selected collection of classic books,
-              discover new stories, and save your favorites in one simple
-              library.
-            </p>
+      <p className="mt-6 max-w-2xl text-base leading-7 text-[#cfc5ba] sm:text-lg">
+        Explore a carefully selected collection of classic books, discover new
+        stories, and save your favorites in one simple library.
+      </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/books"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-(--primary) px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-(--primary-dark)"
-              >
-                Explore Books
-                <ArrowRight size={18} />
-              </Link>
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/books"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#c96b45] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#b85c38]"
+        >
+          Explore Books
+          <ArrowRight size={18} />
+        </Link>
 
-              <Link
-                href="/favorites"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                <Heart size={18} />
-                My Favorites
-              </Link>
-            </div>
-          </div>
-        </div>
+        <Link
+          href="/favorites"
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d9c7b5]/20 bg-[#d9c7b5]/5 px-6 py-3.5 text-sm font-semibold text-[#fffaf3] transition hover:bg-[#d9c7b5]/10"
+        >
+          <Heart size={18} />
+          My Favorites
+        </Link>
+      </div>
+    </div>
+  </div>
 
-        <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-blue-500/10 blur-3xl" />
-      </section>
+  <div className="pointer-events-none absolute -right-40 -top-40 size-[28rem] rounded-full bg-[#c96b45]/10 blur-3xl" />
+
+  <div className="pointer-events-none absolute -bottom-40 -left-40 size-[28rem] rounded-full bg-[#d9c7b5]/5 blur-3xl" />
+</section>
 
       <section className="container py-16 sm:py-20">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
