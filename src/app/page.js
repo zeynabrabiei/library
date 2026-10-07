@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
-      e
-    </div>
+    <>
+      <h1>Book App Starting files</h1>
+    </>
   );
 }

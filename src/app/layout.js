@@ -1,13 +1,18 @@
 import "./globals.css";
-import Footer from "@/components/layout/Footer";
+
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "Book library",
-  description: "Your FAV book library",
-  icons:{
-    icon:"icon.svg"
-  }
+  title: {
+    default: "Book Library",
+    template: "%s | Book Library",
+  },
+  description:
+    "A simple and modern personal library for discovering and saving your favorite books.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -15,7 +20,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-          <main> {children} </main>
+
+        <main className="min-h-screen">{children}</main>
+
         <Footer />
       </body>
     </html>
